@@ -1,6 +1,7 @@
 #include <stdio.h>
 
 void bubble_up(long* heap, long k);
+int num_swaps = 0;
 
 int main(int argc, char** argv)
 {
@@ -19,14 +20,16 @@ int main(int argc, char** argv)
 //Bubble UpHeap Construction 
 //Start at zero? First element is already a heap, doesnt need to be manipulated by itself
     for(i = 1; i < n; i++) {
-       if(heap[i] < heap[(i-1)/2] && i != 0)
+       if(heap[i] < heap[(i-1)/2])
             bubble_up(heap, i); 
     }
+    
+
 //Output to std out
     for(i = 0; i < n; ++i) {
         printf("%ld\n", heap[i]);
     }
-    
+    printf("Total number of swaps: %d\n", num_swaps);
     return 0;
 }
 
@@ -37,13 +40,13 @@ void bubble_up(long* heap, long k)
     long temp = heap[k];
     heap[k] = heap[(k-1)/2];
     heap[(k-1)/2] = temp;
-    
+    num_swaps++;
     
     //check to see if its parent is still bigger, call swap recursively if it is
-    
-    //start at 1 to make this simpler?
-    if(heap[(k-1)/2] < heap[(k-3)/4])
-        bubble_up(heap, (k-1)/2);
-        
+    if((k-3)/4 >= 0) {
+        if(heap[(k-1)/2] < heap[(k-3)/4]) {
+            bubble_up(heap, (k-1)/2);
+        }
+     }   
     return;
 }
