@@ -30,7 +30,7 @@ int main(int argc, char** argv)
     return 0;
 }
 
-
+//Bubble up has one comparison, child to parent
 void bubble_up(long* heap, long k)
 {
     //swap two values that need to swapped

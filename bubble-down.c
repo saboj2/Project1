@@ -27,7 +27,7 @@ int main(int argc, char** argv)
     
     return 0;
 }
-
+//Bubble down has two comparisons, parent to both children
 void bubble_down(long* heap, long k, long n)
 {
     long temp;
